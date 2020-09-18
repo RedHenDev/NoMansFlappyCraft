@@ -149,6 +149,9 @@ function draw(){
 
 function touchEnded(){
     
+    // Permission for sound in browser.
+    userStartAudio();
+    
     // To prevent movement when dragging objects.
     if (canMove === false) { 
         canMove = true;
