@@ -83,7 +83,7 @@ var dayT = true;
 
 var ghostyTime = 255;
 
-function stars(){
+function paintStars(){
     // Stars...
     stroke(0,101,222);
     
@@ -97,12 +97,13 @@ function draw(){
     
     if (!ready) {
         background(0);
-        stars();
+        paintStars();
         textSize(42);
         stroke(200);
         fill(165);
         text("Tap to begin...",22,22);
         return;
+    }
     
     // If it's at least somewhat dark,
     // and there be ghosts, then use
@@ -123,8 +124,8 @@ function draw(){
     if (theta > 1) dayT = true;
     }
     
-        // Draw stars.
-    stars();
+    // Draw stars.
+    paintStars();
     
     // The SUN!
     fill(155 + 100 * theta,200,0);
