@@ -101,7 +101,7 @@ function draw(){
         textSize(42);
         stroke(200);
         fill(165);
-        text("Tap to begin...",22,22);
+        text("Tap to begin...",22,64);
         return;
     }
     
