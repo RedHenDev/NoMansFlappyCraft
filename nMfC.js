@@ -33,6 +33,8 @@ var vox;
 var coinVox;
 var ghostVox;
 
+let ready = false;
+
 function preload(){
     flappyTex = loadImage("RedHenIconAlpha512512.png");
     
@@ -72,7 +74,7 @@ function setup(){
     stars.push(sPos);
      }
     
-    vox.play();
+    
     
 }
 
@@ -81,7 +83,26 @@ var dayT = true;
 
 var ghostyTime = 255;
 
+function stars(){
+    // Stars...
+    stroke(0,101,222);
+    
+    for (let s = 0; s < stars.length; s++){
+        strokeWeight(Math.random()*4);
+        point(stars[s].x, stars[s].y);
+    }
+}
+
 function draw(){
+    
+    if (!ready) {
+        background(0);
+        stars();
+        textSize(42);
+        stroke(200);
+        fill(165);
+        text("Tap to begin...",22,22);
+        return;
     
     // If it's at least somewhat dark,
     // and there be ghosts, then use
@@ -102,13 +123,8 @@ function draw(){
     if (theta > 1) dayT = true;
     }
     
-    // Stars...
-    stroke(0,101,222);
-    
-    for (let s = 0; s < stars.length; s++){
-        strokeWeight(Math.random()*4);
-        point(stars[s].x, stars[s].y);
-    }
+        // Draw stars.
+    stars();
     
     // The SUN!
     fill(155 + 100 * theta,200,0);
@@ -151,6 +167,10 @@ function touchEnded(){
     
     // Permission for sound in browser.
     userStartAudio();
+    ready = true;
+    if (!vox.isPlaying()){
+    vox.play();
+    }
     
     // To prevent movement when dragging objects.
     if (canMove === false) { 
