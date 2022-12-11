@@ -168,6 +168,7 @@ function touchEnded(){
     
     // Permission for sound in browser.
     userStartAudio();
+    getAudioContext();
     ready = true;
     if (!vox.isPlaying()){
     vox.play();
